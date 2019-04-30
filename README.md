@@ -45,4 +45,5 @@ $help - список команд
 Лемешкин Богдан  Алексеевич    ИУ7-23Б  Developer
 
 презентация
-https://drive.google.com/drive/folders/1EMjMqGkpvrnRYQw9imD2ee7_OeR7z4Wz
+
+https://drive.google.com/file/d/11_bPGI932KzDx3NqB6TA9YtzFilXcNJJ/view?usp=sharing
