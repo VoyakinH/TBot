@@ -43,3 +43,6 @@ $help - список команд
 Воробьев Семен   Дмитриевич    ИУ7-24Б  Tester
 
 Лемешкин Богдан  Алексеевич    ИУ7-23Б  Developer
+
+презентация
+https://drive.google.com/drive/folders/1EMjMqGkpvrnRYQw9imD2ee7_OeR7z4Wz
