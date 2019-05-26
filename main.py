@@ -47,10 +47,13 @@ def get_one_question(message):
 def write_question_to_base(message):
 	name = message.from_user.first_name + ' ' + message.from_user.last_name + ' (' + message.from_user.username + ')'
 	time = str(datetime.now().strftime('%H:%M %d-%m'))
-	t = (name, message.text, time)
-	cursor.execute('insert into notes values (?,?,?)', t)
-	conn.commit()
-	bot.send_message(message.chat.id, "Вопрос записан!")
+	if len(message.text) <= 501:
+		t = (name, message.text, time)
+		cursor.execute('insert into notes values (?,?,?)', t)
+		conn.commit()
+		bot.send_message(message.chat.id, "Вопрос записан!")
+	else:
+		bot.send_message(message.chat.id, "Максимальная длина вопроса - 500 символов.")
 
 
 # Вывод вопросов от студентов (DONE)
@@ -83,14 +86,20 @@ def delete_question_by_pos(message):
 
 def delete_question_from_base(message):
 	try:
-		cursor.execute("DELETE FROM notes WHERE rowid = ?", (message.text,))
-		conn.commit()
-		bot.send_message(message.chat.id, "Вопрос удалён")
-		conn.commit()
-		conn.execute("VACUUM")
-		conn.commit()
-	except message.text:
-		bot.send_message(message.chat.id, "Возникла ошибка.")
+		x = int(message.text)
+		sel = cursor.execute('SELECT count() from notes')
+		num_quest = str(sel.fetchone())[1:-2]
+		if 0 < x <= int(num_quest):
+			cursor.execute("DELETE FROM notes WHERE rowid = ?", (x,))
+			conn.commit()
+			bot.send_message(message.chat.id, "Вопрос удалён")
+			conn.commit()
+			conn.execute("VACUUM")
+			conn.commit()
+		else:
+			bot.send_message(message.chat.id, "Вопроса с таким номером нет.")
+	except:
+		bot.send_message(message.chat.id, "Некорректный ввод.")
 
 
 # Очистка всех вопросов (DONE)
