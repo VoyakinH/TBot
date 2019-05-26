@@ -44,7 +44,6 @@ $help - список команд
 
 Лемешкин Богдан  Алексеевич    ИУ7-23Б  Developer
 
+презентация
 
-Используется библиотека: pyTelegramBotAPI
-
-[Документация](https://github.com/eternnoir/pyTelegramBotAPI)
+https://drive.google.com/file/d/11_bPGI932KzDx3NqB6TA9YtzFilXcNJJ/view?usp=sharing
