@@ -47,3 +47,7 @@ $help - список команд
 презентация
 
 https://drive.google.com/file/d/11_bPGI932KzDx3NqB6TA9YtzFilXcNJJ/view?usp=sharing
+
+документация
+
+https://github.com/eternnoir/pyTelegramBotAPI
