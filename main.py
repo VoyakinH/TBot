@@ -45,7 +45,7 @@ def get_one_question(message):
 
 
 def write_question_to_base(message):
-	name = message.from_user.first_name + ' ' + message.from_user.last_name + ' (' + message.from_user.username + ')'
+	name = message.from_user.first_name + ' ' + message.from_user.last_name + ' (@' + message.from_user.username + ')'
 	time = str(datetime.now().strftime('%H:%M %d-%m'))
 	if len(message.text) <= 501:
 		t = (name, message.text, time)
@@ -73,8 +73,43 @@ def show_all_notes(message):
 
 # Команда для ответа преподавателем на вопросы студентов (NOT DONE)
 @bot.message_handler(commands=['answer'])
-def send_welcome(message):
-	bot.reply_to(message, "You said answer")
+def answer(message):
+	bot.send_message(message.chat.id, "Введите номер вопроса ответа:")
+	bot.register_next_step_handler(message, number_of_question)
+
+
+def number_of_question(message):
+	try:
+		global y
+		y = int(message.text)
+		sel = cursor.execute('SELECT count() from notes')
+		num_quest = str(sel.fetchone())[1:-2]
+		if 0 < y <= int(num_quest):
+			bot.send_message(message.chat.id, "Введите ответ:")
+			bot.register_next_step_handler(message, answer_to_question)
+		else:
+			bot.send_message(message.chat.id, "Вопроса с таким номером нет.")
+	except:
+		bot.send_message(message.chat.id, "Некорректный ввод.")
+
+
+def answer_to_question(message):
+	try:
+		cursor.execute('select * from notes order by rowid')
+		text = ""
+		kol_voprosov = 0
+		for row in cursor:
+			kol_voprosov += 1
+			if (kol_voprosov == y):
+				text += 'Вопрос от студента ' + str(row[0]) + " " + str(row[2]) + ':\n' + str(row[1]) + '\n' + 'Ответ от ' + message.from_user.first_name + ' ' + message.from_user.last_name + ' (@' + message.from_user.username + ') ' + str(datetime.now().strftime('%H:%M %d-%m')) + ':\n' + message.text
+				bot.send_message(message.chat.id, text)
+				cursor.execute("DELETE FROM notes WHERE rowid = ?", (y,))
+				conn.commit()
+				conn.commit()
+				conn.execute("VACUUM")
+				conn.commit()
+	except:
+		bot.send_message(message.chat.id, "Некорректный ввод.")
 
 
 # Удаление вопроса из базы данных (DONE)
