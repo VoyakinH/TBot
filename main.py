@@ -71,10 +71,10 @@ def show_all_notes(message):
 		bot.send_message(message.chat.id, 'Вопросы отсутствуют.')
 
 
-# Команда для ответа преподавателем на вопросы студентов (NOT DONE)
+# Команда для ответа преподавателем на вопросы студентов (DONE)
 @bot.message_handler(commands=['answer'])
 def answer(message):
-	bot.send_message(message.chat.id, "Введите номер вопроса ответа:")
+	bot.send_message(message.chat.id, "Введите номер вопроса:")
 	bot.register_next_step_handler(message, number_of_question)
 
 
