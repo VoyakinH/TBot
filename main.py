@@ -2,6 +2,7 @@ import telebot
 import sqlite3
 import os
 from datetime import datetime
+from telebot import types
 
 # Объявление бота
 bot = telebot.TeleBot("740360635:AAFoIbn-rmo3BtS4cYitmd41fMrU0hsfceE")
@@ -31,10 +32,19 @@ else:
 	print("База данных объявлений создана")
 
 
-# Семён сделай это!
+# Вывод доступных команд
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
-	bot.reply_to(message, "You said help")
+	bot.send_message(message.chat.id, "Список команд:\n"
+		"/note - новый вопрос преподавателю.\n"
+		"/shownotes - список вопросов.\n"
+		"/answer - ответить на вопрос (после ответа он удалится).\n"
+		"/newpost - создать новое объявление.\n"
+		"/showposts - показать список обьявлений.\n"
+		"/deletepost - удалить объявление по его номеру.\n"
+		"/deletenote - удалить вопрос по его номеру без ответа.\n"
+		"/clearnotes - удалить все вопросы.\n"
+		"/clearposts - удалить все объявления.")
 
 
 # Получение нового вопроса и запись в базу данных (DONE)
