@@ -153,7 +153,7 @@ def get_one_post(message):
 
 
 def write_post_to_base(message):
-	name = message.from_user.first_name + ' ' + message.from_user.last_name + ' (' + message.from_user.username + ')'
+	name = message.from_user.first_name + ' ' + message.from_user.last_name + ' (@' + message.from_user.username + ')'
 	time = str(datetime.now().strftime('%H:%M %d-%m'))
 	if len(message.text) <= 501:
 		t = (name, message.text, time)
