@@ -168,7 +168,7 @@ def write_post_to_base(message):
 @bot.message_handler(commands=['showposts'])
 def show_all_posts(message):
 	cursor2.execute('select * from posts order by rowid')
-	text = 'Заданные студентами вопросы:\n'
+	text = 'Все объявления:\n'
 	kol_voprosov = 0
 	for row in cursor2:
 		kol_voprosov += 1
@@ -176,7 +176,7 @@ def show_all_posts(message):
 	if kol_voprosov != 0:
 		bot.send_message(message.chat.id, text)
 	else:
-		bot.send_message(message.chat.id, 'Вопросы отсутствуют.')
+		bot.send_message(message.chat.id, 'Объявления отсутствуют.')
 
 
 
