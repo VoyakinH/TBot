@@ -44,6 +44,10 @@ $help - список команд
 
 Лемешкин Богдан  Алексеевич    ИУ7-23Б  Developer
 
+
+демонстрация работы бота 
+https://youtu.be/94hyCQUyXfg
+
 презентация
 
 https://drive.google.com/file/d/11_bPGI932KzDx3NqB6TA9YtzFilXcNJJ/view?usp=sharing
