@@ -55,5 +55,5 @@ https://drive.google.com/file/d/1WltmnBqQ4a6q7tBU8XEDhezCF1OxDC5t/view?usp=shari
 **демонстрация работы бота**
 https://youtu.be/94hyCQUyXfg
 
-**Ссылка на бота** https://t.me/theepxert_bot
+**Ссылка на бота**
 
