@@ -55,16 +55,18 @@ def get_one_question(message):
 
 
 def write_question_to_base(message):
-	name = message.from_user.first_name + ' ' + message.from_user.last_name + ' (@' + message.from_user.username + ')'
-	time = str(datetime.now().strftime('%H:%M %d-%m'))
-	if len(message.text) <= 501:
-		t = (name, message.text, time)
-		cursor.execute('insert into notes values (?,?,?)', t)
-		conn.commit()
-		bot.send_message(message.chat.id, "Вопрос записан!")
-	else:
-		bot.send_message(message.chat.id, "Максимальная длина вопроса - 500 символов.")
-
+	try:
+		name = message.from_user.first_name + ' ' + message.from_user.last_name + ' (@' + message.from_user.username + ')'
+		time = str(datetime.now().strftime('%H:%M %d-%m'))
+		if len(message.text) <= 501:
+			t = (name, message.text, time)
+			cursor.execute('insert into notes values (?,?,?)', t)
+			conn.commit()
+			bot.send_message(message.chat.id, "Вопрос записан!")
+		else:
+			bot.send_message(message.chat.id, "Максимальная длина вопроса - 500 символов.")
+	except:
+		bot.send_message(message.chat.id, "Некорректный ввод")
 
 # Вывод вопросов от студентов (DONE)
 @bot.message_handler(commands=['shownotes'])
@@ -163,16 +165,18 @@ def get_one_post(message):
 
 
 def write_post_to_base(message):
-	name = message.from_user.first_name + ' ' + message.from_user.last_name + ' (@' + message.from_user.username + ')'
-	time = str(datetime.now().strftime('%H:%M %d-%m'))
-	if len(message.text) <= 501:
-		t = (name, message.text, time)
-		cursor2.execute('insert into posts values (?,?,?)', t)
-		conn2.commit()
-		bot.send_message(message.chat.id, "Объявление записано!")
-	else:
-		bot.send_message(message.chat.id, "Максимальная длина объявления - 500 символов.")
-
+	try:
+		name = message.from_user.first_name + ' ' + message.from_user.last_name + ' (@' + message.from_user.username + ')'
+		time = str(datetime.now().strftime('%H:%M %d-%m'))
+		if len(message.text) <= 501:
+			t = (name, message.text, time)
+			cursor2.execute('insert into posts values (?,?,?)', t)
+			conn2.commit()
+			bot.send_message(message.chat.id, "Объявление записано!")
+		else:
+			bot.send_message(message.chat.id, "Максимальная длина объявления - 500 символов.")
+	except:
+		bot.send_message(message.chat.id, "Некорректный ввод.")
 
 # Вывод объявлений из базы данных на экран (DONE)
 @bot.message_handler(commands=['showposts'])
