@@ -44,14 +44,16 @@ $help - список команд
 
 Лемешкин Богдан  Алексеевич    ИУ7-23Б  Developer
 
+документация
+https://github.com/eternnoir/pyTelegramBotAPI
 
-демонстрация работы бота 
+
+
+**Презентация**
+https://drive.google.com/file/d/1WltmnBqQ4a6q7tBU8XEDhezCF1OxDC5t/view?usp=sharing
+
+**демонстрация работы бота**
 https://youtu.be/94hyCQUyXfg
 
-презентация
+**Ссылка на бота** https://t.me/theepxert_bot
 
-https://drive.google.com/file/d/11_bPGI932KzDx3NqB6TA9YtzFilXcNJJ/view?usp=sharing
-
-документация
-
-https://github.com/eternnoir/pyTelegramBotAPI
